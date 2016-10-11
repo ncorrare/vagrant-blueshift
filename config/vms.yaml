@@ -1,0 +1,70 @@
+---
+ # Hashicorp boxes are used by default as per vms.yaml, but there are options
+ # for other boxes in the boxes.yaml file.
+vms:
+  #======================================#
+  # Puppet Master machine                #
+  #======================================#
+  - name: "master.inf.puppet.vm"
+    box: "puppetlabs/centos-7.2-64-nocm"
+    roles: [ "master" ]
+
+  #======================================#
+  # Gitlab machine                       #
+  #======================================#
+  - name: "gitlab.inf.puppet.vm"
+    box: "puppetlabs/centos-7.2-64-nocm"
+    roles: [ "posix_agent" ]
+    providers:
+      - type: virtualbox
+        customize:
+          - [modifyvm, !ruby/sym id, '--memory', 1024]
+
+  #======================================#
+  # General-purpose machines, Portland   #
+  #======================================#
+  - name: "centos6a.pdx.puppet.vm"
+    box: "puppetlabs/centos-6.6-64-nocm"
+    roles: [ "posix_agent" ]
+
+  - name: "centos7a.pdx.puppet.vm"
+    box: "puppetlabs/centos-7.2-64-nocm"
+    roles: [ "posix_agent" ]
+
+  - name: "ubuntu1404a.pdx.puppet.vm"
+    box: "puppetlabs/ubuntu-14.04-64-nocm"
+    roles: [ "posix_agent" ]
+
+  #======================================#
+  # General-purpose machines, Sydney     #
+  #======================================#
+  - name: "centos6b.syd.puppet.vm"
+    box: "puppetlabs/centos-6.6-64-nocm"
+    roles: [ "posix_agent" ]
+    autostart: false
+
+  - name: "centos7b.syd.puppet.vm"
+    box: "puppetlabs/centos-7.2-64-nocm"
+    roles: [ "posix_agent" ]
+    autostart: false
+
+  - name: "ubuntu1404b.syd.puppet.vm"
+    box: "puppetlabs/ubuntu-14.04-64-nocm"
+    roles: [ "posix_agent" ]
+    autostart: false
+
+  #======================================#
+  # Kubernetes demo                      #
+  #======================================#
+
+  - name: "kubemaster.pdx.puppet.vm"
+    box: "puppetlabs/centos-7.2-64-nocm"
+    roles: [ "posix_agent" ]
+
+  - name: "kubeminion-a.pdx.puppet.vm"
+    box: "puppetlabs/centos-7.2-64-nocm"
+    roles: [ "posix_agent" ]
+
+  - name: "kubeminion-b.pdx.puppet.vm"
+    box: "puppetlabs/centos-7.2-64-nocm"
+    roles: [ "posix_agent" ]
