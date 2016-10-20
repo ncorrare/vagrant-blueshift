@@ -68,3 +68,15 @@ vms:
   - name: "kubeminion-b.pdx.puppet.vm"
     box: "puppetlabs/centos-7.2-64-nocm"
     roles: [ "posix_agent" ]
+
+  #======================================#
+  # Docker stuff demo                    #
+  #======================================#
+
+  - name: "dockerhost-a.pdx.puppet.vm"
+    box: "puppetlabs/centos-7.2-64-nocm"
+    roles: [ "posix_agent" ]
+
+  - name: "dockerhost-b.pdx.puppet.vm"
+    box: "puppetlabs/centos-7.2-64-nocm"
+    roles: [ "posix_agent" ]
